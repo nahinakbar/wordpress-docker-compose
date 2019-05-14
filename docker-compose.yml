@@ -2,6 +2,12 @@ version: '3'
 
 services:
   wp:
+  build:
+    context: .
+    dockerfile: Dockerfile
+    args:
+      USER_ID: ${USER_ID:-0}
+      GROUP_ID: ${GROUP_ID:-0}
     image: wordpress:latest # https://hub.docker.com/_/wordpress/
     ports:
       - ${IP}:80:80 # change ip if required
